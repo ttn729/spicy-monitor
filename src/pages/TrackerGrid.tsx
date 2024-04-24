@@ -20,6 +20,7 @@ import {
   GridRowEditStopReasons,
   GridSlots,
   GridCellParams,
+  GridEditInputCell,
 } from "@mui/x-data-grid";
 import { randomId } from "@mui/x-data-grid-generator";
 
@@ -177,6 +178,14 @@ export default function TrackerGrid() {
       headerAlign: "center",
       editable: true,
       flex: 1,
+      renderEditCell: (params) => (
+        <GridEditInputCell
+          {...params}
+          inputProps={{
+            min: 0,
+          }}
+        />
+      ),
     },
     {
       field: "smileLoudly",
@@ -187,6 +196,14 @@ export default function TrackerGrid() {
       headerAlign: "center",
       editable: true,
       flex: 1,
+      renderEditCell: (params) => (
+        <GridEditInputCell
+          {...params}
+          inputProps={{
+            min: 0,
+          }}
+        />
+      ),
     },
     {
       field: "outsideWork",
@@ -197,6 +214,14 @@ export default function TrackerGrid() {
       headerAlign: "center",
       editable: true,
       flex: 1,
+      renderEditCell: (params) => (
+        <GridEditInputCell
+          {...params}
+          inputProps={{
+            min: 0,
+          }}
+        />
+      ),
     },
     {
       field: "botherOthers",
@@ -207,6 +232,14 @@ export default function TrackerGrid() {
       headerAlign: "center",
       editable: true,
       flex: 1,
+      renderEditCell: (params) => (
+        <GridEditInputCell
+          {...params}
+          inputProps={{
+            min: 0,
+          }}
+        />
+      ),
     },
     {
       field: "appraisal",
@@ -332,7 +365,7 @@ export default function TrackerGrid() {
       <Box
         sx={{
           height: 500,
-          width: "80%",
+          width: "100%",
           "& .actions": {
             color: "text.secondary",
           },
