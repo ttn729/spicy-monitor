@@ -1,0 +1,24 @@
+
+div.red {
+  background-color: red;
+}
+
+div.orange {
+  background-color: orange;
+}
+
+div.yellow {
+  background-color: yellow;
+}
+
+div.blue {
+  background-color: turquoise;
+}
+
+div.green {
+  background-color: rgb(82, 245, 0);
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-weight: bold;
+}
