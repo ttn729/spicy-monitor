@@ -103,9 +103,7 @@ function EditToolbar(props: EditToolbarProps) {
 
   return (
     <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Thêm học trò
-      </Button>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick} />
     </GridToolbarContainer>
   );
 }
@@ -168,16 +166,28 @@ export default function TrackerGrid() {
   }
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Tên", width: 180, editable: true },
+    {
+      field: "name",
+      headerName: "Tên",
+      //width: 180,
+      editable: true,
+      flex: 1,
+    },
     {
       field: "outsideTalk",
       headerName: "Nói chuyện riêng",
       type: "number",
-      width: 180,
+      // width: 180,
       align: "center",
       headerAlign: "center",
       editable: true,
       flex: 1,
+      valueFormatter: (value?: number) => {
+        if (value == null) {
+          return "";
+        }
+        return `${value} lần`;
+      },
       renderEditCell: (params) => (
         <GridEditInputCell
           {...params}
@@ -191,11 +201,17 @@ export default function TrackerGrid() {
       field: "smileLoudly",
       headerName: "Cưòi lớn tiếng",
       type: "number",
-      width: 180,
+      // width: 180,
       align: "center",
       headerAlign: "center",
       editable: true,
       flex: 1,
+      valueFormatter: (value?: number) => {
+        if (value == null) {
+          return "";
+        }
+        return `${value} lần`;
+      },
       renderEditCell: (params) => (
         <GridEditInputCell
           {...params}
@@ -209,11 +225,17 @@ export default function TrackerGrid() {
       field: "outsideWork",
       headerName: "Làm việc riêng",
       type: "number",
-      width: 180,
+      // width: 180,
       align: "center",
       headerAlign: "center",
       editable: true,
       flex: 1,
+      valueFormatter: (value?: number) => {
+        if (value == null) {
+          return "";
+        }
+        return `${value} lần`;
+      },
       renderEditCell: (params) => (
         <GridEditInputCell
           {...params}
@@ -227,11 +249,17 @@ export default function TrackerGrid() {
       field: "botherOthers",
       headerName: "Chọc ghẹo bạn",
       type: "number",
-      width: 180,
+      // width: 180,
       align: "center",
       headerAlign: "center",
       editable: true,
       flex: 1,
+      valueFormatter: (value?: number) => {
+        if (value == null) {
+          return "";
+        }
+        return `${value} lần`;
+      },
       renderEditCell: (params) => (
         <GridEditInputCell
           {...params}
@@ -246,7 +274,7 @@ export default function TrackerGrid() {
       headerName: "Đánh giá",
       headerAlign: "center",
       align: "center",
-      width: 220,
+      // width: 220,
       editable: false,
       flex: 1,
       valueGetter: (value, row, column, apiRef) => {
@@ -290,7 +318,7 @@ export default function TrackerGrid() {
       field: "stickerPenalty",
       headerName: "Trừ sticker",
       type: "number",
-      width: 80,
+      // width: 80,
       flex: 1,
       align: "center",
       headerAlign: "center",
@@ -309,9 +337,8 @@ export default function TrackerGrid() {
       field: "actions",
       type: "actions",
       headerName: "Actions",
-      headerAlign: "center"
-      ,
-      width: 100,
+      headerAlign: "center",
+      // width: 100,
       cellClassName: "actions",
       flex: 1,
       getActions: ({ id }) => {
@@ -374,11 +401,18 @@ export default function TrackerGrid() {
           },
         }}
       >
-        <Typography variant="h2" align="center" fontWeight="bold" mb={5}>
+        <Typography variant="h3" align="center" fontWeight="bold" mb={5}>
           BẢNG THEO DÕI HOẠT ĐỘNG TRONG GIỜ HỌC
         </Typography>
 
-        <div style={{ display: "flex", alignItems: "center", width: "100%", marginBottom:20}}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            marginBottom: 20,
+          }}
+        >
           <Typography variant="h4" style={{ marginRight: "10px" }}>
             Lớp:
           </Typography>
@@ -407,6 +441,12 @@ export default function TrackerGrid() {
           }}
           hideFooter
           autoHeight={true}
+          sx={{
+            "& .MuiDataGrid-cell, & .MuiDataGrid-columnHeaderTitle ": {
+              fontSize: "24px",
+              textOverflow: "clip", // remove ellipsis on overflow
+            },
+          }}
         />
         <Typography variant="h6" mt={5}>
           *Mong quý phụ huynh hợp tác nhắc nhở các em để buổi học thêm hiệu quả

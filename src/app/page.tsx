@@ -20,7 +20,7 @@ export default function Home() {
       <div className={styles.center}>
         <h1>Spicy Monitor</h1>
         <div className={styles.description}>
-          <Link key="myClassTracker" href="/TrackerGrid">
+          <Link key="myClassTracker" href="/tracker-grid">
             <p>My Class Tracker</p>
           </Link>
         </div>
